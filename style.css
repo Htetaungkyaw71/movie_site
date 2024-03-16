@@ -1,0 +1,549 @@
+@font-face {
+  font-family: "HeaderFont";
+  src: url("./fonts/Akira\ Expanded\ Demo.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SpeedFont";
+  src: url("./fonts/A4SPEED-Bold.ttf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ConfortFont";
+  src: url("./fonts/Comfortaa-Regular.ttf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.header_bg,
+.m_header_bg {
+  position: relative !important; /* If not already set */
+  z-index: 1 !important; /* Ensure backgrounds are behind clickable elements */
+}
+
+.header_bg .background-current,
+.header_bg .background-next,
+.m_header_bg .background-current,
+.m_header_bg .background-next {
+  /* Ensure these backgrounds do not interfere with pointer events */
+  pointer-events: none !important;
+}
+
+a[href="./detail.html"] {
+  position: relative !important; /* Necessary for z-index to take effect */
+  z-index: 2 !important; /* Higher than .header_bg and its backgrounds */
+}
+
+.search-overlay {
+  overflow: auto !important;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  background: rgba(0, 0, 0); /* Example background */
+  z-index: 1000; /* Ensure it covers other content */
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(100%); /* Start off screen */
+}
+
+/* Class to show the overlay */
+.search-overlay.show {
+  width: 100%;
+  height: 100%;
+  transform: translateX(0); /* Move into view */
+}
+
+.header_card:hover {
+  transform: scale(1.2);
+}
+
+.active {
+  transform: scale(1.2);
+  color: rgba(234, 137, 67, 1) !important;
+  transition: 0.5s;
+}
+
+.swiper-wrapper {
+  background-color: lin;
+}
+
+.header_card {
+  transform-origin: bottom;
+  transition: 0.3s;
+}
+.header_card1 {
+  transform-origin: top;
+  transition: 0.3s;
+}
+.header_card1:hover {
+  transform: scale(1.2);
+}
+
+.header_bg {
+  position: relative;
+  background-image: linear-gradient(to right, #000000, rgba(14, 14, 14, 0)),
+    url("./images/w1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+  width: 100%;
+  z-index: -1;
+  transition: 0.5s;
+}
+.m_header_bg {
+  position: relative;
+  background-image: linear-gradient(
+      to right,
+      #000000 0%,
+      rgba(14, 14, 14, 0) 15%
+    ),
+    linear-gradient(to top, #000000 0%, rgba(14, 14, 14, 0) 15%),
+    url("./images/w1.png");
+  background-repeat: no-repeat;
+  background-size: cover !important;
+  background-position: right !important;
+  width: 100%;
+  z-index: -1;
+  transition: 0.5s;
+}
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1s ease; /* Smooth transition for opacity */
+  z-index: -1; /* Make sure this is behind your content */
+}
+
+.background-next {
+  opacity: 0; /* Start fully transparent */
+}
+
+.swiper-button-prev {
+  --swiper-navigation-size: 0px; /* Hide original arrow */
+  width: 40px !important; /* Adjust based on content */
+  height: 40px !important;
+}
+
+.swiper-button-next {
+  /* Adjust based on content */
+  --swiper-navigation-size: 0px; /* Hide original arrow */
+  width: 40px !important; /* Adjust based on content */
+  height: 40px !important;
+}
+
+.zoom-effect {
+  overflow: hidden; /* Ensures the image does not bleed outside the container */
+  position: relative;
+  width: fit-content; /* Adjust based on your image */
+  cursor: pointer;
+}
+
+.zoom-effect img {
+  display: block;
+  transition: transform 0.5s ease; /* Smooth transition for the zoom effect */
+  width: 100%; /* Ensure the image fills the container */
+  transform: scale(1); /* Start scale */
+}
+
+/* Apply the hover effect to the container, affecting the image */
+.zoom-effect:hover img {
+  transform: scale(1.3); /* Increase the image size to achieve zoom effect */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.zoom-effect:hover .overlay {
+  opacity: 1;
+}
+
+.play-icon {
+  fill: #fff; /* Change the color of the play icon */
+}
+
+.editor-effect {
+  overflow: hidden;
+  position: relative;
+  /* width: fit-content;  */
+  cursor: pointer;
+}
+
+.editor-effect img {
+  display: block;
+  transition: transform 0.5s ease; /* Smooth transition for the zoom effect */
+  width: 100%; /* Ensure the image fills the container */
+}
+
+.editor-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.editor-effect:hover .editor-overlay {
+  opacity: 1;
+}
+
+.play-icon {
+  fill: #fff; /* Change the color of the play icon */
+}
+
+#mainImage {
+  transition: opacity 0.5s ease-in-out; /* Smooth transition for the opacity change */
+  opacity: 1;
+}
+
+@keyframes loadingAnimation {
+  to {
+    background-position: -100% 0;
+  }
+}
+
+.n-left {
+  background-image: linear-gradient(
+    118deg,
+    rgba(255, 255, 255, 0.15) 16.07%,
+    rgba(0, 0, 0, 0) 103.5%
+  );
+  background-size: 200% 100%;
+  animation: loadingAnimation 3s linear forwards;
+}
+
+.cate {
+  cursor: pointer;
+}
+
+.c1 {
+  background-color: rgba(255, 0, 0, 0.4);
+}
+.c2 {
+  background-color: rgba(235, 0, 255, 0.4);
+}
+.c3 {
+  background-color: rgba(112, 0, 255, 0.4);
+}
+.c4 {
+  background-color: rgba(255, 184, 0, 0.4);
+}
+.c5 {
+  background-color: rgba(255, 0, 122, 0.4);
+}
+
+.cate:hover img {
+  transform: scale(1.2) translateY(-10%); /* Adjust scale value as needed */
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.footBanner {
+  background-image: url("./images/footbanner.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 900px;
+}
+
+.foot {
+  background-image: url("./images/footBg.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 375px;
+}
+.mobile-foot {
+  background-image: url("./images/footBg.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* height: 175px; */
+}
+
+.swiper-pagination-bullet {
+  background-color: #d9d9d9 !important;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #ea8943 !important;
+}
+@media screen and (min-width: 440px) and (max-width: 640px) {
+  .footBanner {
+    height: 250px !important;
+  }
+}
+
+.scroll_top {
+  position: absolute;
+  right: 30px;
+  margin-top: -130px;
+  background-color: rgba(100, 100, 100, 0.6);
+  border-color: rgba(91, 91, 91, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.clear {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.divided {
+  align-self: start;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #ea8943 0%, #ea4343 99.71%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline;
+}
+
+.gradient-bg {
+  background: linear-gradient(to right, #ea8943 0%, #ea4343 99.71%);
+}
+
+body {
+  border-bottom: 1px solid var(--Neutral-Colors-Neutral_2, #202020);
+  background: var(--Neutral-Colors-Neutral-_1, #0e0e0e);
+}
+.custom-movie-list-width {
+  width: 950px !important;
+}
+.search-overlay,
+.filter-overlay {
+  overflow: auto !important;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  background: rgba(0, 0, 0); /* Example background */
+  z-index: 1000; /* Ensure it covers other content */
+  transition: transform 0.5s ease-in-out;
+}
+
+.search-overlay {
+  transform: translateX(100%); /* Start off screen */
+}
+
+.filter-overlay {
+  transform: translateY(100%);
+}
+
+/* Class to show the overlay */
+.search-overlay.show {
+  width: 100%;
+  height: 100%;
+  transform: translateX(0); /* Move into view */
+}
+
+.filter-overlay.show {
+  width: 100%;
+  height: 100%;
+  transform: translateY(0); /* Move into view */
+}
+
+.filter {
+  border-radius: 16.667px;
+  background: var(--Neutral-Colors-Neutral_2, #202020);
+}
+
+.region {
+  border-radius: 16.667px;
+  background: var(--Neutral-Colors-Neutral-_1, #0e0e0e);
+}
+
+.region .tab_active {
+  border-radius: 25px;
+  border: 1.667px solid var(--Gradients-orangelinear-gradient, #ea8943);
+  background: var(
+    --Glass,
+    linear-gradient(
+      118deg,
+      rgba(255, 255, 255, 0.15) 16.07%,
+      rgba(0, 0, 0, 0) 103.5%
+    )
+  );
+}
+
+.tab_active h1 {
+  background: var(
+    --Gradients-orangelinear-gradient,
+    linear-gradient(90deg, #ea8943 17.81%, #ea4343 99.71%)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.region .tab {
+  border-radius: 25px;
+  border: 0.833px solid var(--Glass, rgba(255, 255, 255, 0.15));
+  background: var(
+    --Glass-2,
+    linear-gradient(
+      107deg,
+      #555 2.67%,
+      rgba(38, 38, 38, 0) 40.97%,
+      rgba(39, 39, 39, 0.45) 69.95%,
+      rgba(74, 74, 74, 0.8) 100.22%
+    )
+  );
+}
+
+@media screen and (max-width: 800px) {
+  .tab_bg {
+    background: linear-gradient(90deg, #ea8943 17.81%, #ea4343 99.71%);
+    border: none;
+  }
+}
+
+.filter_bg {
+  background: linear-gradient(90deg, #ea8943 17.81%, #ea4343 99.71%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.apply {
+  background: linear-gradient(90deg, #ea8943 17.81%, #ea4343 99.71%);
+}
+
+.sort {
+  border-radius: var(--Height-And-Sizes-20, 20px);
+  background: var(--Neutral-Colors-Neutral-_1, #0e0e0e);
+}
+
+.pagi_active {
+  border-radius: var(--Height-And-Sizes-8, 8px);
+  background: var(
+    --Gradients-orangelinear-gradient,
+    linear-gradient(90deg, #ea8943 17.81%, #ea4343 99.71%)
+  );
+}
+
+/* Define scrollbar styles */
+::-webkit-scrollbar {
+  width: 0px; /* width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: black; /* color of the track */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: black; /* color of the handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: black; /* color of the handle on hover */
+}
+
+.zoom-effect {
+  overflow: hidden; /* Ensures the image does not bleed outside the container */
+  position: relative;
+  width: fit-content; /* Adjust based on your image */
+  cursor: pointer;
+}
+
+.zoom-effect img {
+  display: block;
+  transition: transform 0.5s ease; /* Smooth transition for the zoom effect */
+  width: 100%; /* Ensure the image fills the container */
+  transform: scale(1); /* Start scale */
+}
+
+/* Apply the hover effect to the container, affecting the image */
+.zoom-effect:hover img {
+  transform: scale(1.3); /* Increase the image size to achieve zoom effect */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.zoom-effect:hover .overlay {
+  opacity: 1;
+}
+
+.play-icon {
+  fill: #fff; /* Change the color of the play icon */
+}
+
+.editor-effect {
+  overflow: hidden;
+  position: relative;
+  /* width: fit-content;  */
+  cursor: pointer;
+}
+
+.editor-effect img {
+  display: block;
+  transition: transform 0.5s ease; /* Smooth transition for the zoom effect */
+  width: 100%; /* Ensure the image fills the container */
+}
+
+.editor-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.editor-effect:hover .editor-overlay {
+  opacity: 1;
+}
+
+.play-icon {
+  fill: #fff; /* Change the color of the play icon */
+}
